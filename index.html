@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Para Ela 💖</title>
+
+  <!-- Fonte romântica -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
@@ -11,6 +15,9 @@
       background: #fceeea;
       font-family: Arial, sans-serif;
       overflow-x: hidden;
+      border: 10px solid pink;
+      box-shadow: 0 0 30px rgba(217, 79, 112, 0.4);
+      position: relative;
     }
 
     .main-message {
@@ -23,6 +30,7 @@
     h1 {
       font-size: 28px;
       color: #d94f70;
+      font-family: 'Dancing Script', cursive;
     }
 
     .polaroid-container {
@@ -49,33 +57,3 @@
       height: auto;
       object-fit: cover;
       border-radius: 2px;
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 22px;
-      }
-      .polaroid {
-        width: 90px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="main-message">
-    <h1>Contando os dias pra te ver 💘</h1>
-    <p>21 dias longe, mas cada um vale a pena por você!</p>
-  </div>
-
-  <div class="polaroid-container">
-    <div class="polaroid" style="--rotate: -10deg;"><img src="foto1.jpg" alt="foto1" /></div>
-    <div class="polaroid" style="--rotate: 5deg;"><img src="foto2.jpg" alt="foto2" /></div>
-    <div class="polaroid" style="--rotate: -5deg;"><img src="foto3.jpg" alt="foto3" /></div>
-    <div class="polaroid" style="--rotate: 10deg;"><img src="foto4.jpg" alt="foto4" /></div>
-    <div class="polaroid" style="--rotate: 8deg;"><img src="foto5.jpg" alt="foto5" /></div>
-    <div class="polaroid" style="--rotate: -7deg;"><img src="foto6.jpg" alt="foto6" /></div>
-    <div class="polaroid" style="--rotate: 6deg;"><img src="foto7.jpg" alt="foto7" /></div>
-    <div class="polaroid" style="--rotate: -12deg;"><img src="foto8.jpg" alt="foto8" /></div>
-  </div>
-</body>
-</html>
