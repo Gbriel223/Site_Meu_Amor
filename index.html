@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para Você</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff0f5;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      color: #333;
+    }
+    h1 {
+      color: #d63384;
+    }
+    .galeria {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      padding: 10px 0;
+      scroll-snap-type: x mandatory;
+    }
+    .galeria img {
+      width: 80vw;
+      max-width: 300px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #d63384;
+      scroll-snap-align: center;
+      flex-shrink: 0;
+    }
+    .mensagem {
+      margin: 20px auto;
+      font-size: 1.2em;
+      background-color: #ffe6f0;
+      padding: 15px;
+      border-radius: 10px;
+      display: inline-block;
+      max-width: 90%;
+    }
+    .contador {
+      font-weight: bold;
+      color: #555;
+      margin-top: 10px;
+    }
+    button {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 12px 24px;
+      background-color: #d63384;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+    .hearts {
+      margin-top: 20px;
+      font-size: 24px;
+      color: #ff69b4;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Oi, meu amor!</h1>
+
+  <div class="mensagem" id="mensagem">Carregando mensagem do dia...</div>
+
+  <div class="contador" id="contador"></div>
+
+  <div class="hearts" id="hearts">♥ ♥ ♥ ♥ ♥</div>
+
+  <div class="galeria">
+    <img src="foto1.jpg" alt="Foto 1">
+    <img src="foto2.jpg" alt="Foto 2">
+    <img src="foto3.jpg" alt="Foto 3">
+  </div>
+
+  <button onclick="mostrarAmor()">Sentir sua falta</button>
+
+  <script>
+    const mensagens = [
+      "Hoje acordei pensando em você!",
+      "Faltam poucos dias…",
+      "Você é minha saudade boa.",
+      "Se cuida aí no Japão, amor.",
+      "Contando os dias pra te ver.",
+      "Te amo mais que miojo.",
+      "Essa distância só mostra o quanto te quero.",
+      "Você tá sempre no meu coração.",
+      "Tudo lembra você por aqui.",
+      "Logo a gente se abraça de novo.",
+      "Você é meu melhor presente.",
+      "Mais um dia vencido!",
+      "Sabe o que falta aqui? Você.",
+      "Pensando em nós dois agora.",
+      "Cada dia mais perto.",
+      "Saudades do seu sorriso.",
+      "Que bom que te encontrei.",
+      "Me espera que tô chegando (quase)!",
+      "Eu, você e nossos planos.",
+      "Te amo tanto que não cabe em palavras.",
+      "Já são 21 mensagens… e muito mais amor!"
+    ];
+
+    const hoje = new Date();
+    const inicio = new Date("2025-05-01");
+    const volta = new Date("2025-05-22");
+    const diasPassados = Math.floor((hoje - inicio) / (1000 * 60 * 60 * 24));
+    const diasFaltando = Math.ceil((volta - hoje) / (1000 * 60 * 60 * 24));
+
+    if (hoje.getDate() === 5 && hoje.getMonth() === 4) {
+      document.getElementById("mensagem").innerText = "Feliz aniversário, amor! Mesmo de longe, estou com você!";
+    } else {
+      document.getElementById("mensagem").innerText = mensagens[diasPassados % mensagens.length];
+    }
+
+    document.getElementById("contador").innerText = `Faltam ${diasFaltando} dias pra te ver de novo!`;
+
+    function mostrarAmor() {
+      const coracoes = document.getElementById("hearts");
+      coracoes.style.display = 'block';
+      setTimeout(() => coracoes.style.display = 'none', 2000);
+    }
+  </script>
+</body>
+</html>
