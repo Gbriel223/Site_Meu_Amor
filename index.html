@@ -25,6 +25,8 @@
       padding: 40px 20px;
       position: relative;
       z-index: 10;
+      opacity: 0;
+      transition: opacity 1s ease;
     }
 
     h1 {
@@ -39,6 +41,8 @@
       justify-content: center;
       gap: 20px;
       padding: 20px;
+      opacity: 0;
+      transition: opacity 1s ease;
     }
 
     .polaroid {
@@ -88,28 +92,70 @@
       z-index: 0;
       pointer-events: none;
     }
+
+    /* Estilos para a animação de abrir a carta */
+    .letter-wrapper {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 400px;
+      background-color: #fceeea;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      z-index: 20;
+      overflow: hidden;
+      opacity: 1;
+      animation: openLetter 3s ease-in-out forwards;
+    }
+
+    .letter-wrapper .letter {
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      position: absolute;
+      top: 0;
+      left: 0;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      transition: all 1s;
+      z-index: 5;
+    }
+
+    .letter-wrapper.opened .letter {
+      clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+    }
+
+    /* Abertura da carta */
+    @keyframes openLetter {
+      0% {
+        transform: rotateY(90deg);
+      }
+      100% {
+        transform: rotateY(0deg);
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Animação de abertura da carta -->
+  <div class="letter-wrapper">
+    <div class="letter"></div>
+  </div>
+
+  <!-- Conteúdo da página -->
   <div class="main-message">
     <h1>Parabéns meu amooor  💘</h1>
     <p>
-    
-     Oi, meu amorzinho 💖<br><br>
-      
-    Tá achando que eu ia deixar passar esse dia? NADA DISSO!<br><br>
-
+      Oi, meu amorzinho 💖<br><br>
+      Tá achando que eu ia deixar passar esse dia? NADA DISSO!<br><br>
       Não é por que você ta do outro lado do mundo que eu não ia fazer alguma coisa hehe!<br><br>
-
-    Bom.. hoje é dia 5, ou seja, o aniversário da pessoa mais maravilhosa do mundo!<br><br>
-    Então, PARABÉNS, minha princesa! Aproveita bastante o seu dia meu amorzinho<br><br>
-    
-    Eu tô aqui contando os dias pra te ver de novo!<br><br>  
-    
-    E volta logo, porque eu já tô morrendo de saudades e de vontade de te dar um abraço e varios beijos!<br><br>
-
-    TE AMOOOOOOOOOO<br><br>
-    Ass: Seu bebezinho<br>
+      Bom.. hoje é dia 5, ou seja, o aniversário da pessoa mais maravilhosa do mundo!<br><br>
+      Então, PARABÉNS, minha princesa! Aproveita bastante o seu dia meu amorzinho<br><br>
+      Eu tô aqui contando os dias pra te ver de novo!<br><br>  
+      E volta logo, porque eu já tô morrendo de saudades e de vontade de te dar um abraço e varios beijos!<br><br>
+      TE AMOOOOOOOOOO<br><br>
+      Ass: Seu bebezinho<br>
     </p>
   </div>
 
@@ -136,6 +182,13 @@
       heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
       document.body.appendChild(heart);
     }
+
+    // Depois que a carta abrir, mostrar o conteúdo
+    setTimeout(() => {
+      document.querySelector('.main-message').style.opacity = 1;
+      document.querySelector('.polaroid-container').style.opacity = 1;
+      document.querySelector('.letter-wrapper').classList.add('opened');
+    }, 3000); // Atraso de 3 segundos para iniciar a exibição do conteúdo
   </script>
 </body>
 </html>
