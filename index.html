@@ -104,14 +104,15 @@
       line-height: 1.6;
     }
 
-    /* Polaroids */
+    /* Polaroids em 2 colunas */
     .polaroid-container {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, 1fr); /* Ajusta para 2 colunas */
       gap: 20px;
       padding: 20px;
       position: relative;
       z-index: 1;
+      margin-top: 50px;
     }
 
     .polaroid {
@@ -168,6 +169,10 @@
 
       .main-message {
         padding: 20px 15px;
+      }
+
+      .polaroid-container {
+        grid-template-columns: 1fr; /* No mobile, as polaroides vão ficar em uma coluna */
       }
     }
   </style>
