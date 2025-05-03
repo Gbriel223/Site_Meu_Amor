@@ -79,19 +79,18 @@
 
     /* Personagens fixados */
     .character-container {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      justify-content: space-around;
-      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      position: relative;
       z-index: 2;
+      padding: 20px;
     }
 
     .character {
-      width: 80px;
-      margin: 0 10px;
+      width: 100px;
+      margin: 0;
+      object-fit: contain;
     }
 
     /* Texto romântico */
@@ -116,9 +115,8 @@
 
     /* Polaroids */
     .polaroid-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 20px;
       padding: 20px;
       position: relative;
@@ -129,11 +127,14 @@
       background: white;
       padding: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      width: 120px;
       text-align: center;
       font-size: 12px;
       border-radius: 4px;
       transform: rotate(var(--rotate));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     .polaroid img {
@@ -170,17 +171,16 @@
       }
 
       .polaroid {
-        width: 90px;
+        width: 80px;
       }
 
       .character-container {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
+        gap: 10px;
       }
 
       .character {
-        width: 60px;
-        margin: 10px 0;
+        width: 80px;
       }
 
       .main-message {
@@ -209,7 +209,7 @@
       Não é por que você tá do outro lado do mundo que eu não ia fazer alguma coisa hehe!<br><br>
       Bom.. hoje é dia 5, ou seja, o aniversário da pessoa mais maravilhosa do mundo!<br><br>
       Então, PARABÉNS, minha princesa! Aproveita bastante o seu dia meu amorzinho<br><br>
-      Eu tô aqui contando os dias pra te ver de novo!<br><br>  
+      Eu tô aqui contando os dias pra te ver de novo!<br><br>
       E volta logo, porque eu já tô morrendo de saudades e de vontade de te dar um abraço e vários beijos!<br><br>
       TE AMOOOOOOOOOO<br><br>
       Ass: Seu bebezinho<br>
@@ -228,7 +228,7 @@
     <div class="polaroid" style="--rotate: -12deg;"><img src="img/foto8.jpg" alt="foto8" /></div>
   </div>
 
-  <!-- Personagens fixados -->
+  <!-- Personagens alternados -->
   <div class="character-container">
     <img src="img/snoopy.png" alt="Snoopy" class="character">
     <img src="img/cinnamoroll.png" alt="Cinnamoroll" class="character">
