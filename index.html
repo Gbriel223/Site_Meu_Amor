@@ -14,77 +14,12 @@
       padding: 0;
       background: #fceeea;
       font-family: Arial, sans-serif;
-      overflow-x: hidden; /* Impede a rolagem horizontal */
+      overflow-x: hidden;
       border: 10px solid pink;
       box-shadow: 0 0 30px rgba(217, 79, 112, 0.4);
       position: relative;
     }
 
-    /* Efeito de envelope (carta) */
-    #envelope-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #fceeea;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      animation: fadeOut 1s ease-in-out 3s forwards;
-    }
-
-    .envelope {
-      width: 200px;
-      height: 150px;
-      background: pink;
-      position: relative;
-      border: 3px solid #d94f70;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
-      animation: openEnvelope 3s ease-in-out forwards;
-    }
-
-    .envelope .flap {
-      width: 100%;
-      height: 50%;
-      background: #fbb;
-      position: absolute;
-      top: 0;
-      clip-path: polygon(0 0, 100% 0, 50% 100%);
-      transform-origin: top;
-      animation: flapOpen 3s ease-in-out forwards;
-    }
-
-    .envelope .body {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 50%;
-      background: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    @keyframes flapOpen {
-      0% { transform: rotateX(0deg); }
-      100% { transform: rotateX(-180deg); }
-    }
-
-    @keyframes fadeOut {
-      to { opacity: 0; visibility: hidden; }
-    }
-
-    /* Personagens fixados */
-    .character {
-      width: 40px; /* Tamanho reduzido pela metade */
-      object-fit: contain;
-      position: absolute;
-    }
-
-    /* Texto romântico */
     .main-message {
       text-align: center;
       padding: 40px 20px;
@@ -98,36 +33,23 @@
       font-family: 'Dancing Script', cursive;
     }
 
-    p {
-      font-size: 18px;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    /* Polaroids em 2 colunas */
     .polaroid-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); /* Ajusta para 2 colunas */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 20px;
       padding: 20px;
-      position: relative;
-      z-index: 1;
-      margin-top: 50px;
     }
 
     .polaroid {
       background: white;
       padding: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      width: 120px;
       text-align: center;
       font-size: 12px;
       border-radius: 4px;
       transform: rotate(var(--rotate));
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative; /* Para permitir o posicionamento absoluto dos personagens */
     }
 
     .polaroid img {
@@ -137,7 +59,16 @@
       border-radius: 2px;
     }
 
-    /* Efeito de corações caindo */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 22px;
+      }
+      .polaroid {
+        width: 90px;
+      }
+    }
+
+    /* Corações animados */
     @keyframes fall {
       0% {
         transform: translateY(0);
@@ -157,87 +88,40 @@
       z-index: 0;
       pointer-events: none;
     }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 22px;
-      }
-
-      .polaroid {
-        width: 80px;
-      }
-
-      .main-message {
-        padding: 20px 15px;
-      }
-
-      .polaroid-container {
-        grid-template-columns: 1fr; /* No mobile, as polaroides vão ficar em uma coluna */
-      }
-    }
   </style>
 </head>
 <body>
-  <!-- Efeito da carta (Envelope) -->
-  <div id="envelope-screen">
-    <div class="envelope">
-      <div class="flap"></div>
-      <div class="body">
-        <p>Para você 💌</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Mensagem romântica -->
   <div class="main-message">
-    <h1>Parabéns meu amooor 💘</h1>
+    <h1>Parabéns meu amooor  💘</h1>
     <p>
-      Oi, meu amorzinho 💖<br><br>
-      Tá achando que eu ia deixar passar esse dia? NADA DISSO!<br><br>
-      Não é por que você tá do outro lado do mundo que eu não ia fazer alguma coisa hehe!<br><br>
-      Bom.. hoje é dia 5, ou seja, o aniversário da pessoa mais maravilhosa do mundo!<br><br>
-      Então, PARABÉNS, minha princesa! Aproveita bastante o seu dia meu amorzinho<br><br>
-      Eu tô aqui contando os dias pra te ver de novo!<br><br>
-      E volta logo, porque eu já tô morrendo de saudades e de vontade de te dar um abraço e vários beijos!<br><br>
-      TE AMOOOOOOOOOO<br><br>
-      Ass: Seu bebezinho<br>
+    
+     Oi, meu amorzinho 💖<br><br>
+      
+    Tá achando que eu ia deixar passar esse dia? NADA DISSO!<br><br>
+
+      Não é por que você ta do outro lado do mundo que eu não ia fazer alguma coisa hehe!<br><br>
+
+    Bom.. hoje é dia 5, ou seja, o aniversário da pessoa mais maravilhosa do mundo!<br><br>
+    Então, PARABÉNS, minha princesa! Aproveita bastante o seu dia meu amorzinho<br><br>
+    
+    Eu tô aqui contando os dias pra te ver de novo!<br><br>  
+    
+    E volta logo, porque eu já tô morrendo de saudades e de vontade de te dar um abraço e varios beijos!<br><br>
+
+    TE AMOOOOOOOOOO<br><br>
+    Ass: Seu bebezinho<br>
     </p>
   </div>
 
-  <!-- Polaroids -->
   <div class="polaroid-container">
-    <div class="polaroid" style="--rotate: -10deg;">
-      <img src="img/foto12.jpg" alt="foto12" />
-      <img src="img/snoopy.png" alt="Snoopy" class="character" style="top: -20px; left: -30px;">
-    </div>
-    <div class="polaroid" style="--rotate: 5deg;">
-      <img src="img/foto2.jpg" alt="foto2" />
-      <img src="img/cinnamoroll.png" alt="Cinnamoroll" class="character" style="top: -20px; right: -30px;">
-    </div>
-    <div class="polaroid" style="--rotate: -5deg;">
-      <img src="img/foto3.jpg" alt="foto3" />
-      <img src="img/pompompurin.png" alt="Pompompurin" class="character" style="top: -20px; left: -30px;">
-    </div>
-    <div class="polaroid" style="--rotate: 10deg;">
-      <img src="img/foto4.jpg" alt="foto4" />
-      <img src="img/hangyodon.png" alt="Hangyodon" class="character" style="top: -20px; right: -30px;">
-    </div>
-    <div class="polaroid" style="--rotate: 8deg;">
-      <img src="img/foto5.jpg" alt="foto5" />
-      <img src="img/snoopy.png" alt="Snoopy" class="character" style="top: -20px; left: -30px;">
-    </div>
-    <div class="polaroid" style="--rotate: -7deg;">
-      <img src="img/foto6.jpg" alt="foto6" />
-      <img src="img/cinnamoroll.png" alt="Cinnamoroll" class="character" style="top: -20px; right: -30px;">
-    </div>
-    <div class="polaroid" style="--rotate: 6deg;">
-      <img src="img/foto7.jpg" alt="foto7" />
-      <img src="img/pompompurin.png" alt="Pompompurin" class="character" style="top: -20px; left: -30px;">
-    </div>
-    <div class="polaroid" style="--rotate: -12deg;">
-      <img src="img/foto8.jpg" alt="foto8" />
-      <img src="img/hangyodon.png" alt="Hangyodon" class="character" style="top: -20px; right: -30px;">
-    </div>
+    <div class="polaroid" style="--rotate: -10deg;"><img src="img/foto12.jpg" alt="foto12" /></div>
+    <div class="polaroid" style="--rotate: 5deg;"><img src="img/foto2.jpg" alt="foto2" /></div>
+    <div class="polaroid" style="--rotate: -5deg;"><img src="img/foto3.jpg" alt="foto3" /></div>
+    <div class="polaroid" style="--rotate: 10deg;"><img src="img/foto4.jpg" alt="foto4" /></div>
+    <div class="polaroid" style="--rotate: 8deg;"><img src="img/foto5.jpg" alt="foto5" /></div>
+    <div class="polaroid" style="--rotate: -7deg;"><img src="img/foto6.jpg" alt="foto6" /></div>
+    <div class="polaroid" style="--rotate: 6deg;"><img src="img/foto7.jpg" alt="foto7" /></div>
+    <div class="polaroid" style="--rotate: -12deg;"><img src="img/foto8.jpg" alt="foto8" /></div>
   </div>
 
   <!-- Script para corações caindo -->
@@ -252,13 +136,6 @@
       heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
       document.body.appendChild(heart);
     }
-
-    // Fechar envelope e mostrar o conteúdo
-    document.addEventListener('DOMContentLoaded', () => {
-      setTimeout(() => {
-        document.getElementById('envelope-screen').style.display = 'none';
-      }, 4000); // A carta abrirá por 4 segundos
-    });
   </script>
 </body>
 </html>
