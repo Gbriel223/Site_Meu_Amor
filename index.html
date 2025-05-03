@@ -78,19 +78,10 @@
     }
 
     /* Personagens fixados */
-    .character-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      position: relative;
-      z-index: 2;
-      padding: 20px;
-    }
-
     .character {
-      width: 100px;
-      margin: 0;
+      width: 80px;
       object-fit: contain;
+      position: absolute;
     }
 
     /* Texto romântico */
@@ -135,6 +126,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      position: relative; /* Para permitir o posicionamento absoluto dos personagens */
     }
 
     .polaroid img {
@@ -174,15 +166,6 @@
         width: 80px;
       }
 
-      .character-container {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-
-      .character {
-        width: 80px;
-      }
-
       .main-message {
         padding: 20px 15px;
       }
@@ -218,22 +201,38 @@
 
   <!-- Polaroids -->
   <div class="polaroid-container">
-    <div class="polaroid" style="--rotate: -10deg;"><img src="img/foto12.jpg" alt="foto12" /></div>
-    <div class="polaroid" style="--rotate: 5deg;"><img src="img/foto2.jpg" alt="foto2" /></div>
-    <div class="polaroid" style="--rotate: -5deg;"><img src="img/foto3.jpg" alt="foto3" /></div>
-    <div class="polaroid" style="--rotate: 10deg;"><img src="img/foto4.jpg" alt="foto4" /></div>
-    <div class="polaroid" style="--rotate: 8deg;"><img src="img/foto5.jpg" alt="foto5" /></div>
-    <div class="polaroid" style="--rotate: -7deg;"><img src="img/foto6.jpg" alt="foto6" /></div>
-    <div class="polaroid" style="--rotate: 6deg;"><img src="img/foto7.jpg" alt="foto7" /></div>
-    <div class="polaroid" style="--rotate: -12deg;"><img src="img/foto8.jpg" alt="foto8" /></div>
-  </div>
-
-  <!-- Personagens alternados -->
-  <div class="character-container">
-    <img src="img/snoopy.png" alt="Snoopy" class="character">
-    <img src="img/cinnamoroll.png" alt="Cinnamoroll" class="character">
-    <img src="img/pompompurin.png" alt="Pompompurin" class="character">
-    <img src="img/hangyodon.png" alt="Hangyodon" class="character">
+    <div class="polaroid" style="--rotate: -10deg;">
+      <img src="img/foto12.jpg" alt="foto12" />
+      <img src="img/snoopy.png" alt="Snoopy" class="character" style="top: -20px; left: -30px;">
+    </div>
+    <div class="polaroid" style="--rotate: 5deg;">
+      <img src="img/foto2.jpg" alt="foto2" />
+      <img src="img/cinnamoroll.png" alt="Cinnamoroll" class="character" style="top: -20px; right: -30px;">
+    </div>
+    <div class="polaroid" style="--rotate: -5deg;">
+      <img src="img/foto3.jpg" alt="foto3" />
+      <img src="img/pompompurin.png" alt="Pompompurin" class="character" style="top: -20px; left: -30px;">
+    </div>
+    <div class="polaroid" style="--rotate: 10deg;">
+      <img src="img/foto4.jpg" alt="foto4" />
+      <img src="img/hangyodon.png" alt="Hangyodon" class="character" style="top: -20px; right: -30px;">
+    </div>
+    <div class="polaroid" style="--rotate: 8deg;">
+      <img src="img/foto5.jpg" alt="foto5" />
+      <img src="img/snoopy.png" alt="Snoopy" class="character" style="top: -20px; left: -30px;">
+    </div>
+    <div class="polaroid" style="--rotate: -7deg;">
+      <img src="img/foto6.jpg" alt="foto6" />
+      <img src="img/cinnamoroll.png" alt="Cinnamoroll" class="character" style="top: -20px; right: -30px;">
+    </div>
+    <div class="polaroid" style="--rotate: 6deg;">
+      <img src="img/foto7.jpg" alt="foto7" />
+      <img src="img/pompompurin.png" alt="Pompompurin" class="character" style="top: -20px; left: -30px;">
+    </div>
+    <div class="polaroid" style="--rotate: -12deg;">
+      <img src="img/foto8.jpg" alt="foto8" />
+      <img src="img/hangyodon.png" alt="Hangyodon" class="character" style="top: -20px; right: -30px;">
+    </div>
   </div>
 
   <!-- Script para corações caindo -->
