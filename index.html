@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Para o meu AMOR</title>
 
-  <!-- Fonte romântica -->
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 
   <style>
@@ -20,7 +19,6 @@
       position: relative;
     }
 
-    /* Efeito de envelope (carta) */
     #envelope-screen {
       position: fixed;
       top: 0;
@@ -77,19 +75,6 @@
       to { opacity: 0; visibility: hidden; }
     }
 
-    /* Personagens fixados */
-    .character-container {
-      position: relative;
-      z-index: 1;
-    }
-
-    .character {
-      position: fixed;
-      width: 80px;
-      z-index: 2;
-    }
-
-    /* Texto romântico */
     .main-message {
       text-align: center;
       padding: 40px 20px;
@@ -109,7 +94,6 @@
       line-height: 1.6;
     }
 
-    /* Polaroids */
     .polaroid-container {
       display: flex;
       flex-wrap: wrap;
@@ -136,7 +120,6 @@
       border-radius: 2px;
     }
 
-    /* Efeito de corações caindo */
     @keyframes fall {
       0% {
         transform: translateY(0);
@@ -169,7 +152,6 @@
   </style>
 </head>
 <body>
-  <!-- Efeito da carta (Envelope) -->
   <div id="envelope-screen">
     <div class="envelope">
       <div class="flap"></div>
@@ -179,7 +161,6 @@
     </div>
   </div>
 
-  <!-- Mensagem romântica -->
   <div class="main-message">
     <h1>Parabéns meu amooor 💘</h1>
     <p>
@@ -195,7 +176,6 @@
     </p>
   </div>
 
-  <!-- Polaroids -->
   <div class="polaroid-container">
     <div class="polaroid" style="--rotate: -10deg;"><img src="img/foto12.jpg" alt="foto12" /></div>
     <div class="polaroid" style="--rotate: 5deg;"><img src="img/foto2.jpg" alt="foto2" /></div>
@@ -207,15 +187,6 @@
     <div class="polaroid" style="--rotate: -12deg;"><img src="img/foto8.jpg" alt="foto8" /></div>
   </div>
 
-  <!-- Personagens fixados -->
-  <div class="character-container">
-    <img src="img/snoopy.png" alt="Snoopy" class="character" style="bottom: 20px; left: 10px;">
-    <img src="img/cinnamoroll.png" alt="Cinnamoroll" class="character" style="top: 20px; right: 10px;">
-    <img src="img/pompompurin.png" alt="Pompompurin" class="character" style="bottom: 50px; right: 50px;">
-    <img src="img/hangyodon.png" alt="Hangyodon" class="character" style="top: 50px; left: 50px;">
-  </div>
-
-  <!-- Script para corações caindo -->
   <script>
     const heartCount = 30;
     for (let i = 0; i < heartCount; i++) {
@@ -228,11 +199,10 @@
       document.body.appendChild(heart);
     }
 
-    // Fechar envelope e mostrar o conteúdo
     document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         document.getElementById('envelope-screen').style.display = 'none';
-      }, 4000); // A carta abrirá por 4 segundos
+      }, 4000);
     });
   </script>
 </body>
