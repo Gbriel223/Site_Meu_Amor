@@ -5,13 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Para o meu AMOR</title>
 
+  <!-- Fonte romântica -->
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
       padding: 0;
@@ -20,46 +17,64 @@
       overflow-x: hidden;
       border: 10px solid pink;
       box-shadow: 0 0 30px rgba(217, 79, 112, 0.4);
+      position: relative;
     }
 
-    .carta-container {
+    /* Efeito de envelope (carta) */
+    #envelope-screen {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: #fff0f5;
-      z-index: 9999;
+      width: 100%;
+      height: 100%;
+      background: #fceeea;
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: opacity 1s ease;
+      z-index: 1000;
+      animation: fadeOut 1s ease-in-out 3s forwards;
     }
 
-    .carta {
-      background: white;
-      border: 3px solid pink;
-      padding: 30px;
+    .envelope {
+      width: 200px;
+      height: 150px;
+      background: pink;
+      position: relative;
+      border: 3px solid #d94f70;
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(0,0,0,0.2);
-      max-width: 90%;
-      max-height: 90%;
-      overflow-y: auto;
-      font-family: 'Dancing Script', cursive;
-      font-size: 22px;
-      color: #d94f70;
-      text-align: center;
+      animation: openEnvelope 3s ease-in-out forwards;
     }
 
-    .botao-abrir {
-      margin-top: 20px;
-      background: #d94f70;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 20px;
-      font-size: 16px;
-      cursor: pointer;
+    .envelope .flap {
+      width: 100%;
+      height: 50%;
+      background: #fbb;
+      position: absolute;
+      top: 0;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      transform-origin: top;
+      animation: flapOpen 3s ease-in-out forwards;
+    }
+
+    .envelope .body {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 50%;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes flapOpen {
+      0% { transform: rotateX(0deg); }
+      100% { transform: rotateX(-180deg); }
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
     }
 
     .main-message {
@@ -75,41 +90,14 @@
       font-family: 'Dancing Script', cursive;
     }
 
-    .polaroid-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px;
+    p {
+      font-size: 18px;
+      color: #333;
+      line-height: 1.6;
+      white-space: pre-line;
     }
 
-    .polaroid {
-      background: white;
-      padding: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      width: 120px;
-      text-align: center;
-      font-size: 12px;
-      border-radius: 4px;
-      transform: rotate(var(--rotate));
-    }
-
-    .polaroid img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      border-radius: 2px;
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 22px;
-      }
-      .polaroid {
-        width: 90px;
-      }
-    }
-
+    /* Efeito de corações caindo */
     @keyframes fall {
       0% {
         transform: translateY(0);
@@ -133,55 +121,42 @@
 </head>
 <body>
 
-  <!-- Animação da carta -->
-  <div class="carta-container" id="cartaContainer">
-    <div class="carta">
-      <p>
-        Oi meu amorzinho ❤️<br><br>
-        Eu sei que estamos longe, mas eu não ia deixar esse dia passar em branco.<br>
-        Hoje é um dia muito especial: o seu aniversário!<br><br>
-        Que você sinta todo meu amor e carinho chegando até aí!<br><br>
-        Quando você estiver pronta... clique abaixo pra abrir o resto do presente! 🎁<br>
-      </p>
-      <button class="botao-abrir" onclick="abrirCarta()">Abrir</button>
+  <!-- Efeito da carta (Envelope) -->
+  <div id="envelope-screen">
+    <div class="envelope">
+      <div class="flap"></div>
+      <div class="body">
+        <p>Para você 💌</p>
+      </div>
     </div>
   </div>
 
+  <!-- Mensagem romântica -->
   <div class="main-message">
     <h1>Parabéns meu amooor 💘</h1>
     <p>
-      Oi, meu amorzinho 💖<br><br>
-      Tá achando que eu ia deixar passar esse dia? NADA DISSO!<br><br>
-      Não é por que você tá do outro lado do mundo que eu não ia fazer alguma coisa hehe!<br><br>
-      Bom... hoje é dia 5, ou seja, o aniversário da pessoa mais maravilhosa do mundo!<br><br>
-      Então, PARABÉNS, minha princesa! Aproveita bastante o seu dia meu amorzinho<br><br>
-      Eu tô aqui contando os dias pra te ver de novo!<br><br>
-      E volta logo, porque eu já tô morrendo de saudades e de vontade de te dar um abraço e vários beijos!<br><br>
-      TE AMOOOOOOOOOO<br><br>
-      Ass: Seu bebezinho<br>
+Oi, meu amorzinho 💖
+
+Tá achando que eu ia deixar passar esse dia? NADA DISSO!
+
+Não é por que você tá do outro lado do mundo que eu não ia fazer alguma coisa hehe!
+
+Bom... hoje é dia 5, ou seja, o aniversário da pessoa mais maravilhosa do mundo!
+
+Então, PARABÉNS, minha princesa! Aproveita bastante o seu dia meu amorzinho
+
+Eu tô aqui contando os dias pra te ver de novo!
+
+E volta logo, porque eu já tô morrendo de saudades e de vontade de te dar um abraço e vários beijos!
+
+TE AMOOOOOOOOOO
+
+Ass: Seu bebezinho
     </p>
   </div>
 
-  <div class="polaroid-container">
-    <div class="polaroid" style="--rotate: -10deg;"><img src="img/foto12.jpg" alt="foto12" /></div>
-    <div class="polaroid" style="--rotate: 5deg;"><img src="img/foto2.jpg" alt="foto2" /></div>
-    <div class="polaroid" style="--rotate: -5deg;"><img src="img/foto3.jpg" alt="foto3" /></div>
-    <div class="polaroid" style="--rotate: 10deg;"><img src="img/foto4.jpg" alt="foto4" /></div>
-    <div class="polaroid" style="--rotate: 8deg;"><img src="img/foto5.jpg" alt="foto5" /></div>
-    <div class="polaroid" style="--rotate: -7deg;"><img src="img/foto6.jpg" alt="foto6" /></div>
-    <div class="polaroid" style="--rotate: 6deg;"><img src="img/foto7.jpg" alt="foto7" /></div>
-    <div class="polaroid" style="--rotate: -12deg;"><img src="img/foto8.jpg" alt="foto8" /></div>
-  </div>
-
-  <!-- Corações animados -->
+  <!-- Script para corações caindo -->
   <script>
-    function abrirCarta() {
-      document.getElementById('cartaContainer').style.opacity = '0';
-      setTimeout(() => {
-        document.getElementById('cartaContainer').style.display = 'none';
-      }, 1000);
-    }
-
     const heartCount = 30;
     for (let i = 0; i < heartCount; i++) {
       const heart = document.createElement('div');
@@ -192,6 +167,14 @@
       heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
       document.body.appendChild(heart);
     }
+
+    // Fechar envelope após tempo
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.getElementById('envelope-screen').style.display = 'none';
+      }, 4000); // 4 segundos
+    });
   </script>
+
 </body>
 </html>
