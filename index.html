@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Para o meu AMOR</title>
 
-  <!-- Fonte romântica -->
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -17,7 +20,46 @@
       overflow-x: hidden;
       border: 10px solid pink;
       box-shadow: 0 0 30px rgba(217, 79, 112, 0.4);
-      position: relative;
+    }
+
+    .carta-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #fff0f5;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 1s ease;
+    }
+
+    .carta {
+      background: white;
+      border: 3px solid pink;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      max-width: 90%;
+      max-height: 90%;
+      overflow-y: auto;
+      font-family: 'Dancing Script', cursive;
+      font-size: 22px;
+      color: #d94f70;
+      text-align: center;
+    }
+
+    .botao-abrir {
+      margin-top: 20px;
+      background: #d94f70;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
     }
 
     .main-message {
@@ -25,8 +67,6 @@
       padding: 40px 20px;
       position: relative;
       z-index: 10;
-      opacity: 0;
-      transition: opacity 1s ease;
     }
 
     h1 {
@@ -41,8 +81,6 @@
       justify-content: center;
       gap: 20px;
       padding: 20px;
-      opacity: 0;
-      transition: opacity 1s ease;
     }
 
     .polaroid {
@@ -72,7 +110,6 @@
       }
     }
 
-    /* Corações animados */
     @keyframes fall {
       0% {
         transform: translateY(0);
@@ -92,68 +129,34 @@
       z-index: 0;
       pointer-events: none;
     }
-
-    /* Estilos para a animação de abrir a carta */
-    .letter-wrapper {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 400px;
-      height: 400px;
-      background-color: #fceeea;
-      border-radius: 20px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-      z-index: 20;
-      overflow: hidden;
-      opacity: 1;
-      animation: openLetter 3s ease-in-out forwards;
-    }
-
-    .letter-wrapper .letter {
-      width: 100%;
-      height: 100%;
-      background-color: #fff;
-      position: absolute;
-      top: 0;
-      left: 0;
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-      transition: all 1s;
-      z-index: 5;
-    }
-
-    .letter-wrapper.opened .letter {
-      clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
-    }
-
-    /* Abertura da carta */
-    @keyframes openLetter {
-      0% {
-        transform: rotateY(90deg);
-      }
-      100% {
-        transform: rotateY(0deg);
-      }
-    }
   </style>
 </head>
 <body>
-  <!-- Animação de abertura da carta -->
-  <div class="letter-wrapper">
-    <div class="letter"></div>
+
+  <!-- Animação da carta -->
+  <div class="carta-container" id="cartaContainer">
+    <div class="carta">
+      <p>
+        Oi meu amorzinho ❤️<br><br>
+        Eu sei que estamos longe, mas eu não ia deixar esse dia passar em branco.<br>
+        Hoje é um dia muito especial: o seu aniversário!<br><br>
+        Que você sinta todo meu amor e carinho chegando até aí!<br><br>
+        Quando você estiver pronta... clique abaixo pra abrir o resto do presente! 🎁<br>
+      </p>
+      <button class="botao-abrir" onclick="abrirCarta()">Abrir</button>
+    </div>
   </div>
 
-  <!-- Conteúdo da página -->
   <div class="main-message">
-    <h1>Parabéns meu amooor  💘</h1>
+    <h1>Parabéns meu amooor 💘</h1>
     <p>
       Oi, meu amorzinho 💖<br><br>
       Tá achando que eu ia deixar passar esse dia? NADA DISSO!<br><br>
-      Não é por que você ta do outro lado do mundo que eu não ia fazer alguma coisa hehe!<br><br>
-      Bom.. hoje é dia 5, ou seja, o aniversário da pessoa mais maravilhosa do mundo!<br><br>
+      Não é por que você tá do outro lado do mundo que eu não ia fazer alguma coisa hehe!<br><br>
+      Bom... hoje é dia 5, ou seja, o aniversário da pessoa mais maravilhosa do mundo!<br><br>
       Então, PARABÉNS, minha princesa! Aproveita bastante o seu dia meu amorzinho<br><br>
-      Eu tô aqui contando os dias pra te ver de novo!<br><br>  
-      E volta logo, porque eu já tô morrendo de saudades e de vontade de te dar um abraço e varios beijos!<br><br>
+      Eu tô aqui contando os dias pra te ver de novo!<br><br>
+      E volta logo, porque eu já tô morrendo de saudades e de vontade de te dar um abraço e vários beijos!<br><br>
       TE AMOOOOOOOOOO<br><br>
       Ass: Seu bebezinho<br>
     </p>
@@ -170,8 +173,15 @@
     <div class="polaroid" style="--rotate: -12deg;"><img src="img/foto8.jpg" alt="foto8" /></div>
   </div>
 
-  <!-- Script para corações caindo -->
+  <!-- Corações animados -->
   <script>
+    function abrirCarta() {
+      document.getElementById('cartaContainer').style.opacity = '0';
+      setTimeout(() => {
+        document.getElementById('cartaContainer').style.display = 'none';
+      }, 1000);
+    }
+
     const heartCount = 30;
     for (let i = 0; i < heartCount; i++) {
       const heart = document.createElement('div');
@@ -182,13 +192,6 @@
       heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
       document.body.appendChild(heart);
     }
-
-    // Depois que a carta abrir, mostrar o conteúdo
-    setTimeout(() => {
-      document.querySelector('.main-message').style.opacity = 1;
-      document.querySelector('.polaroid-container').style.opacity = 1;
-      document.querySelector('.letter-wrapper').classList.add('opened');
-    }, 3000); // Atraso de 3 segundos para iniciar a exibição do conteúdo
   </script>
 </body>
 </html>
