@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Para o meu AMOR</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <!-- Fonte romântica -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
   <style>
     body {
@@ -19,6 +20,7 @@
       position: relative;
     }
 
+    /* Efeito de envelope (carta) */
     #envelope-screen {
       position: fixed;
       top: 0;
@@ -30,7 +32,7 @@
       justify-content: center;
       align-items: center;
       z-index: 1000;
-      animation: fadeOut 1s ease-in-out 3.5s forwards;
+      animation: fadeOut 1s ease-in-out 3s forwards;
     }
 
     .envelope {
@@ -41,7 +43,7 @@
       border: 3px solid #d94f70;
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(0,0,0,0.2);
-      animation: openEnvelope 3.5s ease-in-out forwards;
+      animation: openEnvelope 3s ease-in-out forwards;
     }
 
     .envelope .flap {
@@ -52,7 +54,7 @@
       top: 0;
       clip-path: polygon(0 0, 100% 0, 50% 100%);
       transform-origin: top;
-      animation: flapOpen 3.5s ease-in-out forwards;
+      animation: flapOpen 3s ease-in-out forwards;
     }
 
     .envelope .body {
@@ -75,6 +77,7 @@
       to { opacity: 0; visibility: hidden; }
     }
 
+    /* Texto romântico */
     .main-message {
       text-align: center;
       padding: 40px 20px;
@@ -89,11 +92,13 @@
     }
 
     p {
+      font-family: 'Great Vibes', cursive;  /* Fonte alterada para "Great Vibes" */
       font-size: 18px;
       color: #333;
       line-height: 1.6;
     }
 
+    /* Polaroids */
     .polaroid-container {
       display: flex;
       flex-wrap: wrap;
@@ -120,6 +125,7 @@
       border-radius: 2px;
     }
 
+    /* Efeito de corações caindo */
     @keyframes fall {
       0% {
         transform: translateY(0);
@@ -152,6 +158,7 @@
   </style>
 </head>
 <body>
+  <!-- Efeito da carta (Envelope) -->
   <div id="envelope-screen">
     <div class="envelope">
       <div class="flap"></div>
@@ -161,21 +168,23 @@
     </div>
   </div>
 
+  <!-- Mensagem romântica -->
   <div class="main-message">
     <h1>Parabéns meu amooor 💘</h1>
     <p>
       Oi, meu amorzinho 💖<br><br>
       Tá achando que eu ia deixar passar esse dia? NADA DISSO!<br><br>
       Não é por que você tá do outro lado do mundo que eu não ia fazer alguma coisa hehe!<br><br>
-      Bom... hoje é dia 5, ou seja, o aniversário da pessoa mais maravilhosa do mundo!<br><br>
+      Bom.. hoje é dia 5, ou seja, o aniversário da pessoa mais maravilhosa do mundo!<br><br>
       Então, PARABÉNS, minha princesa! Aproveita bastante o seu dia meu amorzinho<br><br>
-      Eu tô aqui contando os dias pra te ver de novo!<br><br>
+      Eu tô aqui contando os dias pra te ver de novo!<br><br>  
       E volta logo, porque eu já tô morrendo de saudades e de vontade de te dar um abraço e vários beijos!<br><br>
       TE AMOOOOOOOOOO<br><br>
       Ass: Seu bebezinho<br>
     </p>
   </div>
 
+  <!-- Polaroids -->
   <div class="polaroid-container">
     <div class="polaroid" style="--rotate: -10deg;"><img src="img/foto12.jpg" alt="foto12" /></div>
     <div class="polaroid" style="--rotate: 5deg;"><img src="img/foto2.jpg" alt="foto2" /></div>
@@ -187,6 +196,7 @@
     <div class="polaroid" style="--rotate: -12deg;"><img src="img/foto8.jpg" alt="foto8" /></div>
   </div>
 
+  <!-- Script para corações caindo -->
   <script>
     const heartCount = 30;
     for (let i = 0; i < heartCount; i++) {
@@ -199,10 +209,11 @@
       document.body.appendChild(heart);
     }
 
+    // Fechar envelope e mostrar o conteúdo
     document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         document.getElementById('envelope-screen').style.display = 'none';
-      }, 4000);
+      }, 4000); // A carta abrirá por 4 segundos
     });
   </script>
 </body>
