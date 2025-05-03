@@ -8,119 +8,124 @@
   <!-- Fonte romântica -->
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 
- <style>
-  body {
-    margin: 0;
-    padding: 0;
-    background: #fceeea;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
-    border: 10px solid pink;
-    box-shadow: 0 0 30px rgba(217, 79, 112, 0.4);
-    position: relative;
-    min-height: 100vh;
-  }
-
-  .main-message {
-    text-align: center;
-    padding: 40px 20px;
-    position: relative;
-    z-index: 10;
-    background-color: rgba(255, 255, 255, 0.9);
-    margin: 0 auto;
-    max-width: 500px;
-    border-radius: 10px;
-  }
-
-  h1 {
-    font-size: 28px;
-    color: #d94f70;
-    font-family: 'Dancing Script', cursive;
-  }
-
-  .polaroid-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .polaroid {
-    position: absolute;
-    background: white;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    width: 100px;
-    text-align: center;
-    font-size: 12px;
-    border-radius: 4px;
-    transform: rotate(var(--rotate));
-  }
-
-  .polaroid img {
-    width: 100%;
-    height: auto;
-    border-radius: 2px;
-  }
-
-  @media (max-width: 480px) {
-    h1 {
-      font-size: 22px;
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fceeea;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+      border: 10px solid pink;
+      box-shadow: 0 0 30px rgba(217, 79, 112, 0.4);
+      position: relative;
     }
 
     .main-message {
-      padding: 30px 10px;
-      max-width: 90%;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #d94f70;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .polaroid-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
     }
 
     .polaroid {
-      width: 80px;
+      background: white;
+      padding: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      width: 120px;
+      text-align: center;
+      font-size: 12px;
+      border-radius: 4px;
+      transform: rotate(var(--rotate));
     }
-  }
-</style>
 
+    .polaroid img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 22px;
+      }
+      .polaroid {
+        width: 90px;
+      }
+    }
+
+    /* Corações animados */
+    @keyframes fall {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+
+    .heart {
+      position: fixed;
+      top: -50px;
+      font-size: 16px;
+      animation: fall linear infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
 <body>
   <div class="main-message">
     <h1>Parabéns meu amooor  💘</h1>
     <p>
-      <!-- [texto do parabéns aqui] -->
+    
+     Oi, meu amorzinho 💖<br><br>
+      
+    Tá achando que eu ia deixar passar esse dia? NADA DISSO!<br><br>
+
+      Não é por que você ta do outro lado do mundo que eu não ia fazer alguma coisa hehe!<br><br>
+
+    Bom.. hoje é dia 5, ou seja, o aniversário da pessoa mais maravilhosa do mundo!<br><br>
+    Então, PARABÉNS, minha princesa! Aproveita bastante o seu dia meu amorzinho<br><br>
+    
+    Eu tô aqui contando os dias pra te ver de novo!<br><br>  
+    
+    E volta logo, porque eu já tô morrendo de saudades e de vontade de te dar um abraço e varios beijos!<br><br>
+
+    TE AMOOOOOOOOOO<br><br>
+    Ass: Seu bebezinho<br>
     </p>
   </div>
 
   <div class="polaroid-container">
-    <!-- As fotos serão posicionadas via script -->
+    <div class="polaroid" style="--rotate: -10deg;"><img src="img/foto12.jpg" alt="foto12" /></div>
+    <div class="polaroid" style="--rotate: 5deg;"><img src="img/foto2.jpg" alt="foto2" /></div>
+    <div class="polaroid" style="--rotate: -5deg;"><img src="img/foto3.jpg" alt="foto3" /></div>
+    <div class="polaroid" style="--rotate: 10deg;"><img src="img/foto4.jpg" alt="foto4" /></div>
+    <div class="polaroid" style="--rotate: 8deg;"><img src="img/foto5.jpg" alt="foto5" /></div>
+    <div class="polaroid" style="--rotate: -7deg;"><img src="img/foto6.jpg" alt="foto6" /></div>
+    <div class="polaroid" style="--rotate: 6deg;"><img src="img/foto7.jpg" alt="foto7" /></div>
+    <div class="polaroid" style="--rotate: -12deg;"><img src="img/foto8.jpg" alt="foto8" /></div>
   </div>
 
+  <!-- Script para corações caindo -->
   <script>
-    const fotos = [
-      'img/foto12.jpg',
-      'img/foto2.jpg',
-      'img/foto3.jpg',
-      'img/foto4.jpg',
-      'img/foto5.jpg',
-      'img/foto6.jpg',
-      'img/foto7.jpg',
-      'img/foto8.jpg'
-    ];
-
-    const container = document.querySelector('.polaroid-container');
-
-    fotos.forEach(src => {
-      const p = document.createElement('div');
-      p.className = 'polaroid';
-      p.style.setProperty('--rotate', `${Math.random() * 30 - 15}deg`);
-      p.style.top = `${Math.random() * 90}vh`;
-      p.style.left = `${Math.random() * 80}vw`;
-      const img = document.createElement('img');
-      img.src = src;
-      p.appendChild(img);
-      container.appendChild(p);
-    });
-
-    // Corações caindo
     const heartCount = 30;
     for (let i = 0; i < heartCount; i++) {
       const heart = document.createElement('div');
