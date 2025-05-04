@@ -100,6 +100,12 @@
     }
 
     /* Polaroids */
+    #photo-section {
+      display: none;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
     .polaroid-container {
       display: flex;
       flex-wrap: wrap;
@@ -185,16 +191,25 @@
     </p>
   </div>
 
-  <!-- Polaroids -->
-  <div class="polaroid-container">
-    <div class="polaroid" style="--rotate: -10deg;"><img src="img/foto12.jpg" alt="foto12" /></div>
-    <div class="polaroid" style="--rotate: 5deg;"><img src="img/foto2.jpg" alt="foto2" /></div>
-    <div class="polaroid" style="--rotate: -5deg;"><img src="img/foto3.jpg" alt="foto3" /></div>
-    <div class="polaroid" style="--rotate: 10deg;"><img src="img/foto4.jpg" alt="foto4" /></div>
-    <div class="polaroid" style="--rotate: 8deg;"><img src="img/foto5.jpg" alt="foto5" /></div>
-    <div class="polaroid" style="--rotate: -7deg;"><img src="img/foto6.jpg" alt="foto6" /></div>
-    <div class="polaroid" style="--rotate: 6deg;"><img src="img/foto7.jpg" alt="foto7" /></div>
-    <div class="polaroid" style="--rotate: -12deg;"><img src="img/foto8.jpg" alt="foto8" /></div>
+  <!-- Botão para revelar as fotos -->
+  <div style="text-align: center; margin-top: 20px;">
+    <button id="show-photos" style="padding: 10px 20px; font-size: 16px; background-color: #d94f70; color: white; border: none; border-radius: 8px; cursor: pointer;">
+      Clique aqui para ver nossas fotos 🥰
+    </button>
+  </div>
+
+  <!-- Seção das fotos (inicialmente escondida) -->
+  <div id="photo-section">
+    <div class="polaroid-container">
+      <div class="polaroid" style="--rotate: -10deg;"><img src="img/foto12.jpg" alt="foto12" /></div>
+      <div class="polaroid" style="--rotate: 5deg;"><img src="img/foto2.jpg" alt="foto2" /></div>
+      <div class="polaroid" style="--rotate: -5deg;"><img src="img/foto3.jpg" alt="foto3" /></div>
+      <div class="polaroid" style="--rotate: 10deg;"><img src="img/foto4.jpg" alt="foto4" /></div>
+      <div class="polaroid" style="--rotate: 8deg;"><img src="img/foto5.jpg" alt="foto5" /></div>
+      <div class="polaroid" style="--rotate: -7deg;"><img src="img/foto6.jpg" alt="foto6" /></div>
+      <div class="polaroid" style="--rotate: 6deg;"><img src="img/foto7.jpg" alt="foto7" /></div>
+      <div class="polaroid" style="--rotate: -12deg;"><img src="img/foto8.jpg" alt="foto8" /></div>
+    </div>
   </div>
 
   <!-- Script para corações caindo -->
@@ -215,6 +230,15 @@
       setTimeout(() => {
         document.getElementById('envelope-screen').style.display = 'none';
       }, 4000); // A carta abrirá por 4 segundos
+    });
+
+    // Mostrar fotos ao clicar no botão
+    document.getElementById('show-photos').addEventListener('click', () => {
+      document.getElementById('photo-section').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('photo-section').style.opacity = 1;
+      }, 50); // Ajusta a animação de fade-in
+      document.getElementById('show-photos').style.display = 'none';
     });
   </script>
 </body>
