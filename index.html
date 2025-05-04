@@ -83,50 +83,55 @@
       padding: 40px 20px;
       position: relative;
       z-index: 10;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out 4s forwards;
     }
 
     h1 {
       font-size: 28px;
       color: #d94f70;
-      font-family: 'Great Vibes', cursive;
+      font-family: 'Great Vibes', cursive; /* Fonte cursiva para o título */
     }
 
     p {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Roboto', sans-serif; /* Fonte legível para o texto */
       font-size: 18px;
       color: #333;
       line-height: 1.6;
-      font-weight: normal;
+      font-weight: normal;  /* Sem negrito para melhorar a leitura */
     }
 
-    /* Personagens no fundo */
-    .character-background {
+    /* Efeito de fade in para o texto */
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* Personagens de fundo */
+    .background-characters {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 1;
+      z-index: -1;
     }
 
-    .character-background img {
+    .background-characters img {
       position: absolute;
-      opacity: 0.2;  /* Ajuste a opacidade conforme necessário */
-      width: 150px;
-      height: auto;
-      transform: rotate(0deg);
-      animation: randomPosition 10s infinite;
+      opacity: 0.2;
+      transition: opacity 0.3s ease-in-out;
     }
 
-    @keyframes randomPosition {
-      0% {
-        transform: translateX(0) translateY(0) rotate(0deg);
-      }
-      100% {
-        transform: translateX(100vw) translateY(100vh) rotate(360deg);
-      }
-    }
+    /* Organizar as imagens de forma aleatória */
+    .background-characters img:nth-child(1) { top: 10%; left: 5%; }
+    .background-characters img:nth-child(2) { top: 20%; left: 50%; }
+    .background-characters img:nth-child(3) { top: 30%; left: 30%; }
+    .background-characters img:nth-child(4) { top: 60%; left: 70%; }
+    .background-characters img:nth-child(5) { top: 80%; left: 20%; }
+    .background-characters img:nth-child(6) { top: 50%; left: 80%; }
+    .background-characters img:nth-child(7) { top: 40%; left: 10%; }
+    .background-characters img:nth-child(8) { top: 70%; left: 60%; }
 
     /* Polaroids */
     .polaroid-container {
@@ -153,27 +158,6 @@
       height: auto;
       object-fit: cover;
       border-radius: 2px;
-    }
-
-    /* Efeito de corações caindo */
-    @keyframes fall {
-      0% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh);
-        opacity: 0;
-      }
-    }
-
-    .heart {
-      position: fixed;
-      top: -50px;
-      font-size: 16px;
-      animation: fall linear infinite;
-      z-index: 0;
-      pointer-events: none;
     }
 
     @media (max-width: 480px) {
@@ -214,13 +198,16 @@
     </p>
   </div>
 
-  <!-- Personagens no fundo -->
-  <div class="character-background">
-    <img src="img/personagem1.png" alt="personagem1" style="top: 10%; left: 10%;"/>
-    <img src="img/personagem2.png" alt="personagem2" style="top: 30%; left: 30%;"/>
-    <img src="img/personagem3.png" alt="personagem3" style="top: 50%; left: 50%;"/>
-    <img src="img/personagem4.png" alt="personagem4" style="top: 70%; left: 70%;"/>
-    <!-- Adicione mais imagens de personagens aqui -->
+  <!-- Personagens de fundo -->
+  <div class="background-characters">
+    <img src="img/personagem1.png" alt="personagem1" />
+    <img src="img/personagem2.png" alt="personagem2" />
+    <img src="img/personagem3.png" alt="personagem3" />
+    <img src="img/personagem4.png" alt="personagem4" />
+    <img src="img/personagem5.png" alt="personagem5" />
+    <img src="img/personagem6.png" alt="personagem6" />
+    <img src="img/personagem7.png" alt="personagem7" />
+    <img src="img/personagem8.png" alt="personagem8" />
   </div>
 
   <!-- Polaroids -->
