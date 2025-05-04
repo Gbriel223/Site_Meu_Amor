@@ -20,7 +20,7 @@
       position: relative;
     }
 
-    /* Efeito de envelope (carta) */
+    /* Envelope */
     #envelope-screen {
       position: fixed;
       top: 0;
@@ -77,7 +77,7 @@
       to { opacity: 0; visibility: hidden; }
     }
 
-    /* Texto romântico */
+    /* Mensagem */
     .main-message {
       text-align: center;
       padding: 40px 20px;
@@ -90,48 +90,40 @@
     h1 {
       font-size: 28px;
       color: #d94f70;
-      font-family: 'Great Vibes', cursive; /* Fonte cursiva para o título */
+      font-family: 'Great Vibes', cursive;
     }
 
     p {
-      font-family: 'Roboto', sans-serif; /* Fonte legível para o texto */
+      font-family: 'Roboto', sans-serif;
       font-size: 18px;
       color: #333;
       line-height: 1.6;
-      font-weight: normal;  /* Sem negrito para melhorar a leitura */
+      font-weight: normal;
     }
 
-    /* Efeito de fade in para o texto */
     @keyframes fadeIn {
       to { opacity: 1; }
     }
 
-    /* Personagens de fundo */
+    /* Fundo de personagens */
     .background-characters {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
+      width: 100vw;
+      height: 100vh;
       z-index: -1;
+      overflow: hidden;
     }
 
     .background-characters img {
       position: absolute;
-      opacity: 0.2;
-      transition: opacity 0.3s ease-in-out;
+      opacity: 0.6;
+      width: 180px;
+      height: auto;
+      transform: rotate(var(--rotate, 0deg));
+      pointer-events: none;
     }
-
-    /* Organizar as imagens de forma aleatória */
-    .background-characters img:nth-child(1) { top: 10%; left: 5%; }
-    .background-characters img:nth-child(2) { top: 20%; left: 50%; }
-    .background-characters img:nth-child(3) { top: 30%; left: 30%; }
-    .background-characters img:nth-child(4) { top: 60%; left: 70%; }
-    .background-characters img:nth-child(5) { top: 80%; left: 20%; }
-    .background-characters img:nth-child(6) { top: 50%; left: 80%; }
-    .background-characters img:nth-child(7) { top: 40%; left: 10%; }
-    .background-characters img:nth-child(8) { top: 70%; left: 60%; }
 
     /* Polaroids */
     .polaroid-container {
@@ -164,7 +156,6 @@
       h1 {
         font-size: 22px;
       }
-
       .polaroid {
         width: 90px;
       }
@@ -172,7 +163,8 @@
   </style>
 </head>
 <body>
-  <!-- Efeito da carta (Envelope) -->
+
+  <!-- Envelope -->
   <div id="envelope-screen">
     <div class="envelope">
       <div class="flap"></div>
@@ -182,7 +174,7 @@
     </div>
   </div>
 
-  <!-- Mensagem romântica -->
+  <!-- Mensagem -->
   <div class="main-message">
     <h1>Parabéns meu amooor 💘</h1>
     <p>
@@ -198,16 +190,17 @@
     </p>
   </div>
 
-  <!-- Personagens de fundo -->
+  <!-- Fundo com personagens -->
   <div class="background-characters">
-    <img src="img/personagem1.png" alt="personagem1" />
-    <img src="img/personagem2.png" alt="personagem2" />
-    <img src="img/personagem3.png" alt="personagem3" />
-    <img src="img/personagem4.png" alt="personagem4" />
-    <img src="img/personagem5.png" alt="personagem5" />
-    <img src="img/personagem6.png" alt="personagem6" />
-    <img src="img/personagem7.png" alt="personagem7" />
-    <img src="img/personagem8.png" alt="personagem8" />
+    <img src="img/personagem1.png" style="top: 5%; left: 10%; --rotate: -10deg;">
+    <img src="img/personagem2.png" style="top: 15%; left: 50%; --rotate: 15deg;">
+    <img src="img/personagem3.png" style="top: 30%; left: 75%; --rotate: -5deg;">
+    <img src="img/personagem4.png" style="top: 45%; left: 20%; --rotate: 10deg;">
+    <img src="img/personagem5.png" style="top: 60%; left: 60%; --rotate: -15deg;">
+    <img src="img/personagem6.png" style="top: 70%; left: 35%; --rotate: 5deg;">
+    <img src="img/personagem7.png" style="top: 85%; left: 80%; --rotate: -20deg;">
+    <img src="img/personagem8.png" style="top: 10%; left: 85%; --rotate: 8deg;">
+    <!-- Repita se quiser mais imagens -->
   </div>
 
   <!-- Polaroids -->
@@ -222,24 +215,41 @@
     <div class="polaroid" style="--rotate: -12deg;"><img src="img/foto8.jpg" alt="foto8" /></div>
   </div>
 
-  <!-- Script para corações caindo -->
+  <!-- Corações caindo -->
   <script>
     const heartCount = 30;
     for (let i = 0; i < heartCount; i++) {
       const heart = document.createElement('div');
       heart.classList.add('heart');
       heart.textContent = '💖';
+      heart.style.position = 'fixed';
       heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      heart.style.top = '-2rem';
+      heart.style.animation = `fall ${Math.random() * 5 + 5}s linear infinite`;
       heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
       document.body.appendChild(heart);
     }
 
-    // Fechar envelope e mostrar o conteúdo
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes fall {
+        to {
+          transform: translateY(110vh);
+        }
+      }
+      .heart {
+        pointer-events: none;
+        position: fixed;
+        z-index: 5;
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Envelope desaparece após 4s
     document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         document.getElementById('envelope-screen').style.display = 'none';
-      }, 4000); // A carta abrirá por 4 segundos
+      }, 4000);
     });
   </script>
 </body>
